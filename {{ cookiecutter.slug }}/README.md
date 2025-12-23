@@ -1,0 +1,2 @@
+# {{ cookiecutter.slug }}
+{{ cookiecutter.description }}

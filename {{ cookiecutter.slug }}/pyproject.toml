@@ -1,0 +1,46 @@
+[project]
+name = "{{ cookiecutter.slug }}"
+version = "0.0.1"
+description = "{{ cookiecutter.description }}"
+readme = "README.md"
+requires-python = ">={{ cookiecutter.python }}"
+dependencies = []
+
+[project.scripts]
+{{ cookiecutter.command }} = "{{ cookiecutter.package }}:main"
+
+[build-system]
+requires = ["uv_build>=0.9.17,<0.10"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "pytest-mock>=3.15.1",
+    "pytest-random-order>=1.2.0",
+    "ruff>=0.14.10",
+    "ty>=0.0.5",
+]
+
+{% if cookiecutter.line != '88' %}
+[tool.ruff]
+line-length = {{ cookiecutter.line }}
+{% endif %}
+
+[tool.ruff.lint]
+extend-select = [
+    "B", # bugbear
+    "I", # isort
+    "C4", # comprehensions
+    "ERA", # eradicate
+]
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+addopts = [
+    "--durations=5",
+    "--cov=src/{{ cookiecutter.package }}",
+    "--cov-branch",
+    "--random-order",
+]

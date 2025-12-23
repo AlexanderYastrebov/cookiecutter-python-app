@@ -1,0 +1,25 @@
+{
+    "slug": "my-python-app",
+    "command": "{{ cookiecutter.slug }}",
+    "description": "My Python application",
+    "package": "{{ cookiecutter.slug | replace('-', '_') }}",
+    "python": "3.9",
+    "line": 79,
+    "github": false,
+    "_copy_without_render": [
+        ".github/workflows/check.yaml"
+    ],
+    "__prompts__": {
+        "slug": "Project slug. Used as source dir, GitHub repo, and PyPI project name",
+        "command": "Command to launch installed app",
+        "package": "Root Python import package name",
+        "description": "One-line project description",
+        "python": "Min supported Python version",
+        "line": "Enforced max Python line length",
+        "github": "Create a GitHub repo?"
+    },
+    "_jinja2_env_vars": {
+        "lstrip_blocks": true,
+        "trim_blocks": true
+    }
+}
